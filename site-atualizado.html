@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Neurogreen — bem-estar complementar com escuta e responsabilidade." name="description"/>
+  <title>
+   Neurogreen | Bem-estar complementar
+  </title>
+  <style>
+   /* Variáveis globais: paleta, tipografia e cores reutilizáveis. */
+:root{--deep:#183D32;--sage:#9EAE98;--cream:#F8F6F0;--sand:#E9E1D2;--gold:#B89958;--ink:#26312C;--muted:#58645D;--line:#d8ded5;--white:#fff;--danger:#8A3D3D;--serif:Georgia,'Times New Roman',serif;--sans:Arial,Helvetica,sans-serif}/* Normalização básica e comportamento global da página. */
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.6 var(--sans)}a{color:inherit}button,input,select,textarea{font:inherit}/* Link de acessibilidade para pular direto ao conteúdo principal. */
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;background:#fff;padding:10px;z-index:9}.wrap{max-width:1180px;margin:auto;padding:0 24px}/* Cabeçalho fixo e navegação principal. */
+.top{position:sticky;top:0;z-index:4;background:#f8f6f0ee;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font:700 28px var(--serif);text-decoration:none;color:var(--deep)}.brand b{color:var(--gold)}.links{display:flex;align-items:center;gap:22px;font-size:14px}.links a{text-decoration:none}.links a:hover{text-decoration:underline}.btn{display:inline-flex;justify-content:center;align-items:center;min-height:48px;padding:11px 20px;border:1px solid var(--deep);border-radius:7px;background:var(--deep);color:#fff;text-decoration:none;font-weight:bold;cursor:pointer}.btn:hover{background:#245442}.btn.outline{background:transparent;color:var(--deep)}.menu{display:none;background:none;border:0;font-size:25px;color:var(--deep)}/* Espaçamento padrão e apresentação da abertura do site. */
+section{padding:84px 0}.hero{padding:86px 0 72px;background:linear-gradient(120deg,#edf0e9, var(--cream))}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center}.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#506b60;font-weight:bold}.hero h1{font:600 clamp(42px,6vw,72px)/1.03 var(--serif);margin:14px 0 22px;color:var(--deep)}.lead{font-size:19px;max-width:610px;color:var(--muted)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.hero-art{min-height:430px;border-radius:18px;background:var(--deep);position:relative;overflow:hidden}.hero-art:before,.hero-art:after{content:'';position:absolute;border:1px solid #ffffff55;border-radius:50%}.hero-art:before{width:500px;height:500px;right:-180px;top:-110px}.hero-art:after{width:390px;height:390px;left:-170px;bottom:-150px}.leaf{position:absolute;width:190px;height:300px;border-radius:100% 0 100% 0;background:#aebda6;transform:rotate(-28deg);right:90px;top:63px;opacity:.9}.leaf:after{content:'';position:absolute;width:2px;height:280px;left:75px;top:20px;background:var(--deep);transform:rotate(30deg)}.hero-art p{position:absolute;bottom:27px;left:30px;right:30px;color:#fff;font:27px/1.2 var(--serif);z-index:1}/* Grades e componentes reutilizáveis das seções de conteúdo. */
+.intro{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}.intro h2,.section-title{font:600 clamp(33px,4vw,48px)/1.1 var(--serif);color:var(--deep);margin:10px 0 16px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:25px}.card h3{font:600 25px var(--serif);margin:0 0 8px;color:var(--deep)}.num{color:var(--gold);font:600 30px var(--serif)}/* Blocos com fundo suave, serviços, FAQ e chamada para ação. */
+.soft{background:var(--sand)}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:40px}.services{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:35px}.service{border-top:3px solid var(--gold);background:#fff;padding:26px;border-radius:0 0 10px 10px}.service h3{font:600 27px var(--serif);color:var(--deep);margin:0 0 12px}.notice{border-left:4px solid var(--gold);background:#fff;padding:20px 22px;margin-top:26px}.faq{max-width:850px}.faq details{border-bottom:1px solid var(--line);padding:17px 0}.faq summary{font-weight:bold;cursor:pointer;color:var(--deep)}.cta{background:var(--deep);color:#fff;text-align:center}.cta h2{font:600 clamp(35px,5vw,54px)/1.1 var(--serif);margin:0 0 15px}.cta p{max-width:650px;margin:0 auto 28px;color:#e6eee8}.cta .btn{background:var(--gold);border-color:var(--gold);color:var(--deep)}/* Área de agendamento e estilos do formulário. */
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px}.form{background:#fff;padding:28px;border:1px solid var(--line);border-radius:12px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}label{font-weight:bold;font-size:14px}input,select,textarea{border:1px solid #abb7ae;border-radius:6px;padding:11px;background:#fff;min-height:46px}textarea{min-height:110px}.check{display:flex;gap:9px;align-items:flex-start;font-size:13px;margin:16px 0}.check input{min-height:auto;margin-top:5px}.form-msg{display:none;margin-top:15px;padding:12px;background:#e8f0e8;color:var(--deep)}/* Rodapé institucional e textos legais. */
+footer{background:#102c24;color:#e8efe9;padding:46px 0;font-size:14px}footer .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}footer strong{font:600 25px var(--serif)}footer a{color:#e8efe9} .legal{font-size:12px;color:#cbd6ce;max-width:850px;margin-top:25px}
+/* Ajustes de layout e menu para telas menores que 800 px. */
+@media(max-width:800px){.links{display:none}.links.open{display:flex;position:absolute;left:0;right:0;top:78px;padding:20px 24px;background:var(--cream);flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--line)}.menu{display:block}.hero-grid,.intro,.contact-grid{grid-template-columns:1fr}.hero-art{min-height:290px}.cards,.steps,.services{grid-template-columns:1fr}section{padding:60px 0}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.wrap{padding:0 20px}}
+  </style>
+ </head>
+ <body>
+  <!-- Atalho de teclado/acessibilidade para chegar ao conteúdo. -->
+  <a class="skip" href="#conteudo">
+   Pular para o conteúdo
+  </a>
+  <!-- Cabeçalho fixo: marca, navegação e menu móvel. -->
+  <header class="top">
+   <nav class="wrap">
+    <a class="brand" href="#inicio">
+     Neuro
+     <b>
+      green
+     </b>
+    </a>
+    <button aria-label="Abrir menu" class="menu" onclick="document.querySelector('.links').classList.toggle('open')">
+     ☰
+    </button>
+    <div class="links">
+     <a href="#sobre">
+      Sobre
+     </a>
+     <a href="#servicos">
+      Serviços
+     </a>
+     <a href="#plantas">
+      Plantas e Bem-estar
+     </a>
+     <a href="#faq">
+      FAQ
+     </a>
+     <a href="#contato">
+      Contato
+     </a>
+     <a class="btn" href="#agendamento">
+      Agende uma conversa
+     </a>
+    </div>
+   </nav>
+  </header>
+  <!-- Conteúdo principal da página. -->
+  <main id="conteudo">
+   <!-- Apresentação inicial e chamadas para ação. -->
+   <section class="hero" id="inicio">
+    <div class="wrap hero-grid">
+     <div>
+      <div class="eyebrow">
+       Bem-estar complementar
+      </div>
+      <h1>
+       Escuta, natureza e cuidado responsável.
+      </h1>
+      <p class="lead">
+       Um espaço de conversa e orientação individualizada para quem busca integrar práticas de bem-estar e uma relação mais consciente com a natureza à rotina.
+      </p>
+      <div class="actions">
+       <a class="btn" href="#agendamento">
+        Agende uma conversa
+       </a>
+       <a class="btn outline" href="#sobre">
+        Conheça a abordagem
+       </a>
+      </div>
+     </div>
+     <div aria-label="Ilustração botânica abstrata" class="hero-art">
+      <div class="leaf">
+      </div>
+      <p>
+       “O cuidado começa quando existe espaço para escutar.”
+      </p>
+     </div>
+    </div>
+   </section>
+   <!-- Posicionamento, propósito e pilares da Neurogreen. -->
+   <section id="sobre">
+    <div class="wrap">
+     <div class="intro">
+      <div>
+       <div class="eyebrow">
+        Neurogreen
+       </div>
+       <h2>
+        Cuidado que começa pela escuta.
+       </h2>
+      </div>
+      <div>
+       <p>
+        A Neurogreen cria um espaço mais sereno para conversar sobre bem-estar integral e práticas complementares. Em vez de fórmulas prontas, valorizamos contexto, informação e escuta.
+       </p>
+       <p>
+        Nosso propósito é apoiar escolhas mais conscientes, com clareza, respeito e responsabilidade. Essa abordagem é complementar e não substitui avaliação, diagnóstico ou tratamento por profissionais habilitados.
+       </p>
+      </div>
+     </div>
+     <div class="cards">
+      <article class="card">
+       <h3>
+        Mais clareza
+       </h3>
+       <p>
+        Informação acessível para considerar práticas integrativas com consciência.
+       </p>
+      </article>
+      <article class="card">
+       <h3>
+        Orientação individualizada
+       </h3>
+       <p>
+        Uma conversa que respeita necessidades, limites e preferências pessoais.
+       </p>
+      </article>
+      <article class="card">
+       <h3>
+        Natureza em contexto
+       </h3>
+       <p>
+        Plantas e práticas naturais são abordadas com prudência, sem promessas exageradas.
+       </p>
+      </article>
+     </div>
+    </div>
+   </section>
+   <!-- Etapas do atendimento. -->
+   <section class="soft">
+    <div class="wrap">
+     <div class="eyebrow">
+      Atendimento
+     </div>
+     <h2 class="section-title">
+      Como funciona
+     </h2>
+     <div class="steps">
+      <div>
+       <div class="num">
+        01
+       </div>
+       <h3>
+        Agende uma conversa
+       </h3>
+       <p>
+        Escolha a melhor data e conte brevemente o que você busca.
+       </p>
+      </div>
+      <div>
+       <div class="num">
+        02
+       </div>
+       <h3>
+        Compartilhe seu contexto
+       </h3>
+       <p>
+        Entendemos sua rotina, expectativas e dúvidas em um encontro acolhedor.
+       </p>
+      </div>
+      <div>
+       <div class="num">
+        03
+       </div>
+       <h3>
+        Receba orientação responsável
+       </h3>
+       <p>
+        Conheça possibilidades de bem-estar complementar e próximos passos adequados ao seu contexto.
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Lista de serviços complementares oferecidos. -->
+   <section id="servicos">
+    <div class="wrap">
+     <div class="eyebrow">
+      Possibilidades de cuidado
+     </div>
+     <h2 class="section-title">
+      Serviços complementares
+     </h2>
+     <p class="lead">
+      As abordagens são apresentadas como apoio ao bem-estar e não substituem cuidados de saúde convencionais.
+     </p>
+     <div class="services">
+      <article class="service">
+       <h3>
+        Conversa de bem-estar
+       </h3>
+       <p>
+        Encontro de escuta para compreender objetivos, rotina e dúvidas, apresentando possibilidades com clareza.
+       </p>
+       <a href="#agendamento">
+        Agendar conversa →
+       </a>
+      </article>
+      <article class="service">
+       <h3>
+        Plantas e uso consciente
+       </h3>
+       <p>
+        Conversa educativa sobre precauções, limites e contexto de uso, sem prescrição de substâncias específicas.
+       </p>
+       <a href="#agendamento">
+        Agendar conversa →
+       </a>
+      </article>
+
+     </div>
+    </div>
+   </section>
+   <!-- Orientações educativas sobre plantas e uso consciente. -->
+   <section class="soft" id="plantas">
+    <div class="wrap">
+     <div class="eyebrow">
+      Conteúdo educativo
+     </div>
+     <h2 class="section-title">
+      Plantas e Bem-estar
+     </h2>
+     <div class="intro">
+      <p class="lead">
+       “Natural” não significa automaticamente adequado ou isento de riscos. Escolhas responsáveis consideram a pessoa, sua rotina, condições de saúde, medicamentos e acompanhamento profissional.
+      </p>
+      <div class="notice">
+       <b>
+        Uso consciente inclui:
+       </b>
+       <br/>
+       • atenção a possíveis interações com medicamentos;
+       <br/>
+       • cuidado adicional em gestação, amamentação e condições preexistentes;
+       <br/>
+       • atenção à procedência e identificação correta;
+       <br/>
+       • nunca interromper ou alterar tratamentos sem orientação profissional.
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Perguntas frequentes; o elemento details abre e fecha cada resposta. -->
+   <section id="faq">
+    <div class="wrap faq">
+     <div class="eyebrow">
+      Dúvidas frequentes
+     </div>
+     <h2 class="section-title">
+      FAQ
+     </h2>
+     <details>
+      <summary>
+       A Neurogreen substitui acompanhamento médico?
+      </summary>
+      <p>
+       Não. Nossa abordagem é complementar e não substitui avaliação, diagnóstico ou tratamento por profissionais habilitados.
+      </p>
+     </details>
+     <details>
+      <summary>
+       As práticas integrativas funcionam para todas as pessoas?
+      </summary>
+      <p>
+       Não há garantia de resultados. Cada pessoa tem contexto, expectativas e necessidades próprios.
+      </p>
+     </details>
+     <details>
+      <summary>
+       Posso manter meu acompanhamento médico?
+      </summary>
+      <p>
+       Sim. Cuidados complementares devem coexistir de forma responsável com os acompanhamentos de saúde necessários.
+      </p>
+     </details>
+     <details>
+      <summary>
+       Existem riscos no uso de plantas e produtos naturais?
+      </summary>
+      <p>
+       Sim. Podem existir contraindicações, efeitos indesejados e interações. Procure orientação profissional, especialmente se usa medicamentos ou possui condição de saúde.
+      </p>
+     </details>
+    </div>
+   </section>
+   <!-- Chamada para ação antes do agendamento. -->
+   <section class="cta">
+    <div class="wrap">
+     <h2>
+      Comece por uma conversa tranquila e informada.
+     </h2>
+     <p>
+      Conheça a abordagem da Neurogreen e avalie, com calma, se ela é adequada ao seu momento.
+     </p>
+     <a class="btn" href="#agendamento">
+      Agende uma conversa
+     </a>
+    </div>
+   </section>
+   <!-- Dados de contato e formulário de solicitação de agendamento. -->
+   <section id="agendamento">
+    <div class="wrap contact-grid">
+     <div>
+      <div class="eyebrow">
+       Agendamento
+      </div>
+      <h2 class="section-title">
+       Vamos conversar?
+      </h2>
+      <p>
+       Envie sua solicitação. A equipe retornará por
+       <b>
+        [INSERIR CANAL E PRAZO]
+       </b>
+       . O envio não confirma automaticamente o atendimento.
+      </p>
+      <p>
+       <b>
+        WhatsApp:
+       </b>
+       [INSERIR NÚMERO]
+       <br/>
+       <b>
+        E-mail:
+       </b>
+       [INSERIR DADO]
+      </p>
+     </div>
+     <form class="form" onsubmit="enviar(event)">
+      <div class="form-grid">
+       <div class="field">
+        <label for="nome">
+         Nome completo
+        </label>
+        <input id="nome" required=""/>
+       </div>
+       <div class="field">
+        <label for="email">
+         E-mail
+        </label>
+        <input id="email" required="" type="email"/>
+       </div>
+       <div class="field">
+        <label for="tel">
+         Telefone
+        </label>
+        <input id="tel" required="" type="tel"/>
+       </div>
+       <div class="field">
+        <label for="servico">
+         Serviço de interesse
+        </label>
+        <select id="servico" required="">
+         <option value="">
+          Selecione
+         </option>
+         <option>
+          Conversa de bem-estar
+         </option>
+         <option>
+          Plantas e uso consciente
+         </option>
+         <option>
+          [INSERIR SERVIÇO]
+         </option>
+        </select>
+       </div>
+       <div class="field">
+        <label for="data">
+         Preferência de data
+        </label>
+        <input id="data" type="date"/>
+       </div>
+       <div class="field">
+        <label for="hora">
+         Preferência de horário
+        </label>
+        <input id="hora" type="time"/>
+       </div>
+       <div class="field full">
+        <label for="msg">
+         Mensagem (opcional)
+        </label>
+        <textarea id="msg"></textarea>
+       </div>
+      </div>
+      <label class="check">
+       <input required="" type="checkbox"/>
+       <span>
+        Li a Política de Privacidade e autorizo o uso dos meus dados para responder a esta solicitação e organizar o atendimento.
+       </span>
+      </label>
+      <button class="btn" type="submit">
+       Enviar solicitação
+      </button>
+      <div class="form-msg" id="form-msg" role="status">
+       Recebemos sua solicitação. Em breve, a Neurogreen entrará em contato pelo canal informado para confirmar possibilidades de horário. Este formulário não substitui atendimento de urgência.
+      </div>
+     </form>
+    </div>
+   </section>
+   <!-- Canais institucionais adicionais. -->
+   <section class="soft" id="contato">
+    <div class="wrap">
+     <div class="eyebrow">
+      Contato
+     </div>
+     <h2 class="section-title">
+      Canais institucionais
+     </h2>
+     <p>
+      <b>
+       Telefone:
+      </b>
+      [INSERIR DADO]
+      <b>
+       Endereço:
+      </b>
+      [INSERIR DADO]
+      <b>
+       Horários:
+      </b>
+      [INSERIR DADO]
+     </p>
+    </div>
+   </section>
+  </main>
+  <!-- Rodapé e aviso legal. -->
+  <footer>
+   <div class="wrap foot">
+    <div>
+     <strong>
+      Neurogreen
+     </strong>
+     <p>
+      Bem-estar complementar com escuta e responsabilidade.
+     </p>
+    </div>
+    <div>
+     <a href="#sobre">
+      Sobre
+     </a>
+     ·
+     <a href="#servicos">
+      Serviços
+     </a>
+     ·
+     <a href="#contato">
+      Contato
+     </a>
+    </div>
+   </div>
+   <div class="wrap legal">
+    Os conteúdos deste site têm caráter informativo e não substituem avaliação, diagnóstico ou tratamento por profissionais habilitados. Estruturas de Política de Privacidade e Termos de Uso devem passar por revisão jurídica antes da publicação.
+   </div>
+  </footer>
+  <!--
+  Interação do formulário: impede o recarregamento, exibe confirmação,
+  limpa os campos e leva a mensagem de status para a área visível.
+  Observação: esta versão apenas simula o envio no navegador; não há integração
+  com servidor, e-mail ou banco de dados.
+-->
+  <script>
+   function enviar(e){e.preventDefault();document.getElementById('form-msg').style.display='block';e.target.reset();document.getElementById('form-msg').scrollIntoView({behavior:'smooth',block:'nearest'})}
+  </script>
+ </body>
+</html>
